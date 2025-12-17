@@ -21,8 +21,14 @@
 	let creditWarning: string | null = null;
 	let logsContainer: HTMLElement;
 
-// API 서버 베이스 URL (빈 문자열이면 동일 오리진 또는 Vite proxy 사용)
-const API_BASE = import.meta.env.VITE_API_BASE || '';
+// API 서버 베이스 URL
+// - Vercel 등 배포 환경에서는 VITE_API_BASE가 없으면 백엔드 고정 주소로 포인트
+// - 로컬 개발 시에는 Vite proxy를 타도록 빈 문자열 유지 (VITE_API_BASE 미설정)
+const API_BASE =
+	import.meta.env.VITE_API_BASE ||
+	(typeof window !== 'undefined' && window.location.hostname.endsWith('vercel.app')
+		? 'http://14.36.192.223:8000'
+		: '');
 
 	// Login
 	let studentId = '';
