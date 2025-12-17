@@ -21,8 +21,8 @@
 	let creditWarning: string | null = null;
 	let logsContainer: HTMLElement;
 
-// API 서버 베이스 URL (main.py 서비스 주소)
-const API_BASE = 'http://14.36.192.223:8000';
+// API 서버 베이스 URL (빈 문자열이면 동일 오리진 또는 Vite proxy 사용)
+const API_BASE = import.meta.env.VITE_API_BASE || '';
 
 	// Login
 	let studentId = '';
