@@ -84,6 +84,9 @@ const API_BASE = 'http://14.36.192.223:8000';
 		try {
 			const res = await fetch(`${API_BASE}/api/auth/login`, {
 				method: 'POST',
+				mode: 'cors',
+				credentials: 'include',
+				referrerPolicy: 'no-referrer',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ student_id: studentId, password })
 			});
@@ -171,6 +174,9 @@ const API_BASE = 'http://14.36.192.223:8000';
 			
 			const res = await fetch(`${API_BASE}/api/chat`, {
 				method: 'POST',
+				mode: 'cors',
+				credentials: 'include',
+				referrerPolicy: 'no-referrer',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(requestBody)
 			});
