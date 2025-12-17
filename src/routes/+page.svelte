@@ -21,6 +21,9 @@
 	let creditWarning: string | null = null;
 	let logsContainer: HTMLElement;
 
+// API 서버 베이스 URL (main.py 서비스 주소)
+const API_BASE = 'http://14.36.192.223:8000';
+
 	// Login
 	let studentId = '';
 	let password = '';
@@ -79,7 +82,7 @@
 		loginError = '';
 
 		try {
-			const res = await fetch('/api/auth/login', {
+			const res = await fetch(`${API_BASE}/api/auth/login`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ student_id: studentId, password })
@@ -166,7 +169,7 @@
 			};
 			console.log('Request body:', requestBody);
 			
-			const res = await fetch('/api/chat', {
+			const res = await fetch(`${API_BASE}/api/chat`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(requestBody)
